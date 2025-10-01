@@ -1,43 +1,14 @@
-## Adicionar o projeto no GitHub
+Ótima ideia\! Adicionar os comandos de conexão torna o guia muito mais prático.
 
-Utilizaremos a Vercel em conjunto com o GitHub. A Vercel se conecta ao seu repositório e, a cada atualização que você envia (`git push`), ela automaticamente faz um novo deploy da sua aplicação. Portanto, o primeiro passo é ter seu projeto em um repositório no GitHub.
+Vamos atualizar a seção `### 2. Comandos Iniciais do Git` para incluir esses passos.
 
-O processo completo de como usar o Git e o GitHub está detalhado no curso [**Git na Prática**](https://neps.academy/br/course/git-na-pratica). A seguir, vamos mostrar os passos essenciais para preparar seu projeto.
+---
 
-### 1\. Preparando os Arquivos
+### 2\. Comandos do Git para Enviar o Projeto
 
-Antes de enviar seu código, precisamos garantir que dois arquivos importantes estejam corretos.
+Com os arquivos prontos, você pode iniciar o processo de versionamento e enviar seu código para o GitHub pela primeira vez.
 
-**Atualize as dependências**
-
-O arquivo `requirements.txt` lista todos os pacotes Python que seu projeto precisa para funcionar. A Vercel usará este arquivo para instalar tudo corretamente. Para garantir que ele está atualizado, execute o comando no seu terminal:
-
-```sh
-pip freeze > requirements.txt
-```
-
-**Crie o arquivo `.gitignore`**
-
-Este arquivo diz ao Git quais arquivos e pastas devem ser ignorados. Isso é crucial para não enviar segredos (como senhas no arquivo `.env`) ou pastas desnecessárias para o seu repositório público. Crie um arquivo chamado `.gitignore` e adicione o seguinte conteúdo:
-
-```git
-# Arquivo com segredos e variáveis de ambiente
-.env
-
-# Pasta do ambiente virtual
-venv/
-
-# Pasta de cache do Python
-__pycache__/
-```
-
-> O arquivo ".env", a pasta "venv" e as pastas de cache do Python não serão enviados para o GitHub.
-
-### 2\. Comandos Iniciais do Git
-
-Com os arquivos prontos, você pode iniciar o processo de versionamento com o Git.
-
-1.  **Inicialize um repositório Git** na pasta do seu projeto:
+1.  **Inicialize um repositório Git** na pasta do seu projeto (caso ainda não tenha feito):
 
     ```sh
     git init
@@ -55,4 +26,24 @@ Com os arquivos prontos, você pode iniciar o processo de versionamento com o Gi
     git commit -m "Commit inicial da API"
     ```
 
-> A partir daqui, os próximos passos são: criar um repositório vazio no site do GitHub, conectar seu projeto local a ele e enviar suas alterações (`git push`). Você pode ver o passo a passo detalhado de como fazer isso na [aula do curso de Git](https://neps.academy/br/course/git-na-pratica).
+4.  **Conecte seu projeto local ao repositório do GitHub.** Para este passo, você primeiro precisa **criar um repositório novo e vazio no site do GitHub**. Após criá-lo, o GitHub te dará uma URL (que termina em `.git`). Copie essa URL e use os comandos abaixo:
+
+    - (Opcional, mas recomendado) Renomeie sua branch principal para `main`, que é o padrão atual:
+      ```sh
+      git branch -M main
+      ```
+    - Adicione o endereço do seu repositório remoto (do GitHub) ao seu projeto local. **Substitua `<URL_DO_SEU_REPOSITORIO>` pela URL que você copiou.**
+      ```sh
+      git remote add origin <URL_DO_SEU_REPOSITORIO>
+      ```
+
+5.  **Envie seus arquivos para o GitHub:**
+    Agora, envie seu commit para o repositório no GitHub.
+
+    ```sh
+    git push -u origin main
+    ```
+
+    > O comando `-u` faz a ligação entre sua branch local e a do GitHub. Nas próximas vezes que for enviar atualizações, você só precisará usar `git push`.
+
+Pronto\! Seu código agora está no GitHub, pronto para ser conectado à Vercel. Para um aprofundamento em todos esses comandos, não deixe de consultar o curso [**Git na Prática**](https://neps.academy/br/course/git-na-pratica).
