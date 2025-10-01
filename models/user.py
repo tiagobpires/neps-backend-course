@@ -18,7 +18,7 @@ class User(db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey("role.id"))
 
     username = db.Column(db.String(64), unique=True, nullable=False, index=True)
-    password_hash = db.Column(db.String(128), index=True)
+    password_hash = db.Column(db.String(256), index=True)
 
     email = db.Column(db.String(128), unique=True, nullable=False, index=True)
     birthdate = db.Column(db.DateTime)

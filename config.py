@@ -27,6 +27,7 @@ class DevelopmentConfig(Config):
 # Configuração para Produção
 class ProductionConfig(Config):
     uri = os.getenv("POSTGRES_URL")
-    if uri and uri.startswith("postgres://"):
-        uri = uri.replace("postgres://", "postgresql://", 1)
+
+    uri = uri.replace("postgresql://", "postgresql+psycopg://", 1)
+
     SQLALCHEMY_DATABASE_URI = uri
